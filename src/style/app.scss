@@ -1,4 +1,4 @@
-@import 'style/var';
+@import 'var';
 body{
 	background:$primary-color;
 	font-family: $font-family;
@@ -7,6 +7,13 @@ body{
 		font-size:72px;
 	}
 	h1{
+		color:green;
+		font-size: 2px;
+	}
+	h2{
 		color:red;
+	}
+	h4{
+		color:$blue;
 	}
 }

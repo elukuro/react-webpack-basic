@@ -14,7 +14,7 @@ module.exports = {
                 test: /\.scss$/, 
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader','sass-loader'],
+                    use: ['css-loader','sass-loader','resolve-url-loader', 'sass-loader?sourceMap'],
                 })
             },
             {
@@ -34,14 +34,14 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Project Demo',
             minify: {
-                collapseWhitespace: true
+                collapseWhitespace: false
             },
             hash: true,
             filename:'./index.html',
-            template: './src/index.html',
+            template: './src/template/index.html',
         }),
         new ExtractTextPlugin({
-            filename: 'app.css',
+        	filename:'style/app.css',
             disable: false,
             allChunks: true
         })
