@@ -3,10 +3,10 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require("path");
 
 module.exports = {
-    entry: './src/app.js',
+    entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: 'app.bundle.js'
+        filename: 'script/bundle.js'
     },
     module: {
         rules: [
@@ -41,7 +41,7 @@ module.exports = {
             template: './src/template/index.html',
         }),
         new ExtractTextPlugin({
-        	filename:'style/app.css',
+        	filename:'style/style.css',
             disable: false,
             allChunks: true
         })
