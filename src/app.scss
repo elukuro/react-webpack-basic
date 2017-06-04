@@ -1,7 +1,12 @@
+@import 'style/var';
 body{
-	background:#555555;
+	background:$primary-color;
+	font-family: $font-family;
 	p{
 		color:blue;
 		font-size:72px;
+	}
+	h1{
+		color:red;
 	}
 }

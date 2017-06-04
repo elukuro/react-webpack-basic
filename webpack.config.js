@@ -1,49 +1,49 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-var path =require('path');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var path = require("path");
 
-module.exports={
-	entry:'./src/app.js',
-	output:{
-		path: path.resolve(__dirname,'/dist'),
-		filename: 'app.bundle.js'
-	},
-	module:{
-		rules:[
-			{
-				test:/\.scss$/ , 
-					use:ExtractTextPlugin.extract({
-						fallbackLoader:'style-loader',
-						loader:['css-loader','sass-loader'],
-						publicPath:'./dist'
-					})
-			},
-			{
+module.exports = {
+    entry: './src/app.js',
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: 'app.bundle.js'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.scss$/, 
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader','sass-loader'],
+                })
+            },
+            {
 				test:/\.js$/,
 				exclude: /node_modules/,
 				use:'babel-loader'
 			}
-		]
-	},
-	devServer:{
-		contentBase:path.join(__dirname,"dist"),
-		compress:true,
-		port:9000,
-		stats:"errors-only",
-		open:true
-	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			title:'my app',
-			template:'./src/index.html',
-			minify:{
-				collapseWhitespace:true
-			}
-		}),
-		new ExtractTextPlugin({
-			filename:'app.css',
-			disable:false,
-			allChunks:true
-		}),
-	]
+        ]
+    },
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
+        stats: "errors-only",
+        open: false
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'Project Demo',
+            minify: {
+                collapseWhitespace: true
+            },
+            hash: true,
+            filename:'./index.html',
+            template: './src/index.html',
+        }),
+        new ExtractTextPlugin({
+            filename: 'app.css',
+            disable: false,
+            allChunks: true
+        })
+    ]
 }
