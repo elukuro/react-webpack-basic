@@ -4,6 +4,7 @@ var path = require("path");
 
 module.exports = {
     entry: './src/index.js',
+    devtool: 'inline-source-map',
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: 'script/bundle.js'
@@ -28,7 +29,8 @@ module.exports = {
         contentBase: path.join(__dirname, "dist"),
         compress: true,
         stats: "errors-only",
-        open: false
+        open: false,
+        historyApiFallback: true    
     },
     plugins: [
         new HtmlWebpackPlugin({
