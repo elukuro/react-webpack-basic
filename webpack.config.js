@@ -1,51 +1,60 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var path = require("path");
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var webpack = require('webpack')
+var path = require('path')
+
+var isProd = process.env.NODE_ENV === 'production' // true or false
+var cssDev = ['style-loader', 'css-loader', 'sass-loader']
+var cssProd = ExtractTextPlugin.extract({
+  fallback: 'style-loader',
+  loader: ['css-loader', 'sass-loader'],
+  publicPath: '/dist'
+})
+var cssConfig = isProd ? cssProd : cssDev
 
 module.exports = {
-    entry: './src/index.js',
-    devtool: 'inline-source-map',
-    output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: 'script/bundle.js'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.scss$/, 
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader','sass-loader','resolve-url-loader', 'sass-loader?sourceMap'],
-                })
-            },
-            {
-				test:/\.js$/,
-				exclude: /node_modules/,
-				use:'babel-loader'
-			}
-        ]
-    },
-    devServer: {
-        contentBase: path.join(__dirname, "dist"),
-        compress: true,
-        stats: "errors-only",
-        open: false,
-        historyApiFallback: true    
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Project Demo',
-            minify: {
-                collapseWhitespace: false
-            },
-            hash: true,
-            filename:'./index.html',
-            template: './src/template/index.html',
-        }),
-        new ExtractTextPlugin({
-        	filename:'style/style.css',
-            disable: false,
-            allChunks: true
-        })
+  entry: {
+    app: './src/index.js'
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'script/[name].bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: cssConfig
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      }
     ]
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    hot: true,
+    open: true,
+     historyApiFallback: true,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Project Demo',
+      hash: true,
+      template: './src/template/index.html',
+      minify: {
+            collapseWhitespace: false
+        },
+    }),
+    new ExtractTextPlugin({
+      filename: 'style/style.css',
+      disable: !isProd,
+      allChunks: true
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
+  ]
 }

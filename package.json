@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=dev webpack-dev-server --hot --inline",
-    "prod": "webpack -p"
+    "dev": "webpack-dev-server",
+    "prod": "npm run clean && NODE_ENV=production webpack -p",
+    "clean": "rimraf ./dist/*"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "react-dom": "^15.5.4",
     "react-router-dom": "^4.1.1",
     "resolve-url-loader": "^2.0.2",
+    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.1",
     "webpack": "^2.6.1",
