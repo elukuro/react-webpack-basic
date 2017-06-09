@@ -27,6 +27,7 @@ class postIndex extends Component{
 				<ul className="list-group">
 					{this.renderPosts()}
 				</ul>
+				<img src={require('../images/test-image.png')}/>
 			</div>
 		)
 	}

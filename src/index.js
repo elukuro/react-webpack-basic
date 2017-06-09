@@ -10,7 +10,7 @@ import reducers from './reducers/';
 const createStoreWithMiddleware=applyMiddleware(Promise)(createStore);
 import App from './component/app';
 import postIndex from './component/post_index';
-
+import New from './container/new';
 
 ReactDOM.render(
 	<Provider store={createStoreWithMiddleware(reducers)}>
@@ -18,6 +18,8 @@ ReactDOM.render(
 			<div>
 				<Switch>
 					<Route path="/test" component={postIndex}/>	
+					<Route path="/new" component={New}/>	
+					
 					<Route path="/" component={App}/>	
 				</Switch>
 			</div>

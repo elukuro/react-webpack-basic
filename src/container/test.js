@@ -4,7 +4,11 @@ class Test extends Component{
 	render(){
 		return(
 			<div>
-				<h4>this is for test page</h4>
+				<div>
+					<h4>this is for test page</h4>
+				</div>
+				<div>
+				</div>
 			</div>
 		)
 	}
