@@ -2,4 +2,5 @@ node_modules/
 npm-debug.log
 dist/
 .gitignore
-.DB_Store/
+*.DS_Store
+.DS_Store
