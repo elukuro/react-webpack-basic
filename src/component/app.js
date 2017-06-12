@@ -16,7 +16,7 @@ class App extends Component{
 				<h5>test lagi</h5>
 				<h6>{this.state.hello} test for state</h6>
 				<h7>tset</h7><br/>
-				<Link to="/test">move to test</Link>
+				<Link to="/list">move to test</Link>
 			</div>
 		)
 	}

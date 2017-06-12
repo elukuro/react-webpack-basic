@@ -13,7 +13,7 @@ class postIndex extends Component{
 		return _.map(this.props.postsList , post => {
 			return(
 				<li className="list-item" key={post.id}>
-				<Link to={`posts/${post.id}`}>
+				<Link to={`list/${post.id}`}>
 					{post.title}
 				</Link>
 				</li>

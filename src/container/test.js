@@ -8,6 +8,7 @@ class Test extends Component{
 					<h4>this is for test page</h4>
 				</div>
 				<div>
+					<img src={require('/images/test-image.png')}/>
 				</div>
 			</div>
 		)

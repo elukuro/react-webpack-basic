@@ -10,16 +10,18 @@ import reducers from './reducers/';
 const createStoreWithMiddleware=applyMiddleware(Promise)(createStore);
 import App from './component/app';
 import postIndex from './component/post_index';
+import postShow from './component/post_show';
 import New from './container/new';
-
+import Homina from './container/homina';
 ReactDOM.render(
 	<Provider store={createStoreWithMiddleware(reducers)}>
 		<BrowserRouter>
 			<div>
 				<Switch>
-					<Route path="/test" component={postIndex}/>	
+					<Route path="/list/:id" component={postShow}/>
+					<Route path="/list" component={postIndex}/>	
 					<Route path="/new" component={New}/>	
-					
+					<Route path="/homina" component={Homina}/>	
 					<Route path="/" component={App}/>	
 				</Switch>
 			</div>

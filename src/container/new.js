@@ -27,6 +27,7 @@ class New extends Component{
 
 		axios.post('http://reduxblog.herokuapp.com/api/posts?key=hominahominahominahomina',data).then((result)=>{
 			console.log(result);
+			this.props.history.push('/list');
 		})
 	}
 
