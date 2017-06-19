@@ -36,6 +36,7 @@ class postIndex extends Component{
 		return(
 			<div>
 				<h1>test post index popular</h1>
+				<Link to="/new">create new</Link>
 				<ul className="list-group">
 					{this.renderPosts()}
 				</ul>
