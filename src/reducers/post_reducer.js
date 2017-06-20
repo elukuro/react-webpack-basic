@@ -1,4 +1,4 @@
-import {POST_FETCH,POST_DETAIL} from '../action/index';
+import {POST_FETCH,POST_DETAIL,DELETE_POST} from '../action/index';
 import _ from 'lodash';
 export default function(state={},action){
 
