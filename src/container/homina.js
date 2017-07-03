@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-
+import {GoogleMap} from '../component/google_map';
 
 const Greeting = (props)=> {
 	const {name,age}=props;
@@ -15,14 +15,14 @@ class Homina extends Component{
 		super(props);
 		this.state={
 			buyItems:['milk','bread','something'],
-			title:'ini judul'
+			title:'ini judul',
+			lat:-34.397,
+			lng:150.644
 		}
 
 	}
 
-	componentWillMount(){
-		console.log(this.state.buyItems[0])
-	}
+	
 
 	addItem(e){
 		e.preventDefault();
@@ -71,8 +71,8 @@ class Homina extends Component{
 						    </tbody>
 						  </table>
 				  	</div>
-				</div>
-			</div>
+				</div>			
+		</div>
 		)
 	}
 }
